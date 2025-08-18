@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>打卡信息展示</title>
+    <style>
+        body { font-family: sans-serif; font-size: 18px; padding: 40px; }
+        h1 { margin-bottom: 30px; }
+        .user-block { margin-bottom: 30px; padding: 10px; border-bottom: 1px solid #ccc; }
+        .name { font-size: 26px; font-weight: bold; }
+        .user-periods {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #6c63ff;
+            border-radius: 4px;
+        }
+        .user-periods .name {
+            font-weight: bold;
+            margin-bottom: 6px;
+            color: #333;
+        }
+        .user-periods ul {
+            padding-left: 20px;
+            margin: 0;
+            list-style: disc;
+        }
+        .user-periods li {
+            margin-bottom: 4px;
+            color: #444;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h1>📅 打卡情况展示</h1>
+
+    {% for user in users %}
+    <div class="user-block">
+    <div class="name">👤 {{ user.name }}</div>
+        <p>本月统计：{{ user.hour }}</p>
+        <p>今日状态：
+        上午 {{ user.status[0] }}/{{ user.status[1] }}，
+        下午 {{ user.status[2] }}/{{ user.status[3] }}，
+        晚上 {{ user.status[4] }}/{{ user.status[5] }}
+        </p>
+    </div>
+    {% endfor %}
+    {% for user in users %}
+    <div class="user-periods">
+        <div class="name">👤 {{ user.name }}</div>
+        <ul>
+            <li>上午：签到 {{ user.periods.上午.签到 }}，签退 {{ user.periods.上午.签退 }}</li>
+            <li>下午：签到 {{ user.periods.下午.签到 }}，签退 {{ user.periods.下午.签退 }}</li>
+            <li>晚上：签到 {{ user.periods.晚上.签到 }}，签退 {{ user.periods.晚上.签退 }}</li>
+        </ul>
+    </div>
+    {% endfor %}
+</body>
+</html>
