@@ -51,10 +51,10 @@ template = env.get_template("index.html")
 update_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 rendered_html = template.render(users=user_data, update_time=update_time)
 
-# 输出到 output/index.html
-output_dir = "output"
+# 输出到 docs/index.html
+output_dir = "docs"
 os.makedirs(output_dir, exist_ok=True)
 with open(os.path.join(output_dir, "index.html"), "w", encoding="utf-8") as f:
     f.write(rendered_html)
 
-print("✅ 页面生成完毕: output/index.html")
+print("✅ 页面生成完毕: dcos/index.html")
