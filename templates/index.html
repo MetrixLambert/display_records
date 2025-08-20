@@ -30,6 +30,12 @@
             color: #444;
             font-size: 14px;
         }
+        footer {
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+            margin-top: 40px;
+        }
     </style>
 </head>
 <body>
@@ -56,5 +62,9 @@
         </ul>
     </div>
     {% endfor %}
+
+    <footer style="text-align: center; margin-top: 40px; color: gray;">
+    ⏱️ 数据更新时间：{{ update_time }}
+    </footer>
 </body>
 </html>
